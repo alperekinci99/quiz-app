@@ -1,5 +1,6 @@
 
 import { Link } from "react-router-dom"
+import SelectedQuestions from "../components/SelectedQuestions"
 
 export default function Home(props){
 
@@ -12,8 +13,12 @@ export default function Home(props){
                 </div>
                 
                 {
-                    props.butonStatu === true ? <div className="continue-button active"><Link to="quiz">Sınava Başla</Link></div> : 
-                    <div className="continue-button disable"><Link to="quiz" onClick={(e) => e.preventDefault()}>Sınava Başla</Link></div>
+                    props.butonStatu === true ? <div className="continue-button active"><Link to="quiz" onClick={() => {
+                        props.butonTikla()
+                    } }>{props.butonText}</Link></div> : 
+                    <div className="continue-button disable"><Link to="quiz" onClick={(e) => {
+                        e.preventDefault()
+                    } }>{props.butonText}</Link></div>
                 }
             </div>
             <div className="content-body">
@@ -36,20 +41,7 @@ export default function Home(props){
                 
                 {
                     props.secilenSorular.length > 0 && 
-                    <div className="selected-area">
-                        <h4>Seçilen Sorular</h4>
-                        <ul className="selected-questions">
-                        {
-                            props.secilenSorular.map((item, index) => 
-                                <li key={index}>
-                                <div>{item.question}</div>
-                                <span onClick={() => props.soruSil(item)}><i className="fa fa-xmark"></i></span>
-                             </li> 
-                             
-                            )
-                        }
-                        </ul>
-                    </div>  
+                    <SelectedQuestions secilenSorular={props.secilenSorular} soruSil={props.soruSil}/>
                 }
             </div>
         </section>

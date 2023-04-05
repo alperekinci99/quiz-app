@@ -13,10 +13,13 @@ header{
     border-bottom: 1px solid #000;
     padding: 1.75rem 1rem;
     background-color: #286aa4;
-    color: #fff;
     h1{
         font-size: 28px;
         font-weight: 700;
+        a{
+            text-decoration: none;
+            color: #fff;
+        }
     }
 }
 
@@ -56,10 +59,18 @@ header{
                 font-size: 18px;
                 font-weight: 600;
                 color: #fff;
+                
+                
             }
             &.active{
                 pointer-events: all;
                 opacity: 1;
+                a{
+                    transition: .1s ease;
+                    &:hover{
+                        background-color: #34a95f;
+                    }
+                }
             }
             &.disable{
                 pointer-events: none;
@@ -150,4 +161,88 @@ header{
 
 .quiz{
     padding: 3rem 0;
+    .quiz-area{
+        width: 60%;
+        margin: 0 auto;
+        .page-description{
+            margin-bottom: 1rem;
+        }
+        .quiz-item{
+            background-color: rgba(136, 169, 201, 0.4);
+            padding: 20px 30px;
+            border-radius: 4px;
+            &:not(:last-child){
+                margin-bottom: 2rem;
+            }
+            .question{
+                margin-bottom: 1rem;
+                font-size: 15px;
+                font-weight: 600;
+            }
+            .answers{
+                list-style-type: upper-latin;
+                list-style-position: inside;
+                padding-left: 0;
+                display: flex;
+                flex-wrap: wrap;
+                align-items: stretch;
+                gap: 1.25rem;
+                li{
+                    width: 48%;
+                    background-color: #fff;
+                    padding: 12px 15px;
+                    border-radius: 4px;
+                    cursor: pointer;
+                }
+            }
+            &.answered{
+                .answers{
+                    li{
+                        pointer-events: none;
+                        &.true{
+                            background-color: #25d366;
+                        }
+                        &.false{
+                            background-color: rgb(200, 19, 19);
+                            color: #fff;
+                        }
+                    }
+                }
+            }
+            &.disable{
+                opacity: .4;
+                *{
+                    cursor: not-allowed !important;
+                }
+                .answers{
+                    li{
+                        pointer-events: none;
+                    }
+                }
+            }
+            
+        }
+        .result{
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-top: 2rem;
+            .answer-info{
+                font-size: 18px;
+                font-weight: 600;
+                &.true-answers{
+                    color: #25d366;
+                }
+                &.false-answers{
+                    color: rgb(200, 19, 19);
+                }
+            }
+        }
+    }
+}
+
+.text-center{
+    text-align: center;
+    width: 80%;
+    margin: 1rem auto;
 }
