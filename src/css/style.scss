@@ -238,6 +238,24 @@ header{
                 }
             }
         }
+        .link-area{
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 10px 0;
+            a{
+                text-decoration: none;
+                padding: 7px 25px;
+                background-color: #25d366;
+                border-radius: 3px;
+                font-size: 18px;
+                font-weight: 600;
+                transition: .1s ease;
+                color: #fff;
+                &:hover{
+                    background-color: #34a95f;
+                }
+            }
+        }
     }
 }
 

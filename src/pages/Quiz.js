@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Quiz(props){
 
     return(
@@ -6,6 +8,9 @@ export default function Quiz(props){
             <div className="quiz-area">
                 <div className="page-description">
                     <p>Sınava hoşgeldiniz! Sizin için güzel bir deneyim olması dileklerimizle..</p>
+                    <div className="link-area">
+                        <Link to="/"><i className="fa-solid fa-arrow-left-long"></i>&nbsp;Geri Git</Link>
+                    </div>
                 </div>
             {
                 props.secilenSorular.sort((a, b) => a.id > b.id ? 1 : -1).map((item, index) =>
