@@ -4,18 +4,23 @@ import MainLayout from './layouts/MainLayout';
 import Home from './pages/Home';
 
 import { questions } from './database/questions'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Quiz from './pages/Quiz';
 
 function App() {
 
-  const [ questionList, setQuestionList ] = useState(questions)
+  const [ questionList, setQuestionList ] = useState([])
   const [ selectedQuestions, setSelectedQuestions ] = useState([]);
   const [ btnActive, setBtnActive ] = useState(false);
   const [ btnText, setBtnText ] = useState('Sınava Başla');
   const [ activeQuestion, setActiveQuestion ] = useState(0);
   const [ trueCount, setTrueCount ] = useState(0);
   const [ falseCount, setFalseCount ] = useState(0);
+
+  // component yüklendiğinde değerleri getir
+  useEffect(() => {
+    setQuestionList(questions)
+  }, []);
 
   const selectQuestion = (item) => {
     const arr = selectedQuestions.some(function(question){
